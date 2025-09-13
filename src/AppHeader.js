@@ -1,12 +1,15 @@
+import { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import cantine from "./images/CantineVersion2.jpg";
-import LanguageDetector from "./Pages/LanguageDetector";
+import LanguageDetector from "./LanguageDetector";
 import NavHeader from "./NavHeader";
 import logo from "./images/LogoLND.jpeg";
+import LanguageContext  from "./LanguageContext";
 
 function AppHeader() {
+  const [language, setLanguage] = useState("en-US");
   return (
     <div>
       <Container>
@@ -42,7 +45,12 @@ function AppHeader() {
 
                   <Col>
                     <div style={{ float: "right" }}>
-                      <LanguageDetector />
+                      <LanguageContext.Provider value={{ language, setLanguage }}>
+                        <div>
+                          <LanguageDetector />
+                        </div>
+                      </LanguageContext.Provider>
+                  
                     </div>
                   </Col>
                 </Row>
@@ -52,7 +60,8 @@ function AppHeader() {
         </Row>
         <Row>
           <div>
-            <NavHeader />
+            
+            <NavHeader language={language} />
           </div>
         </Row>
         <Row>
