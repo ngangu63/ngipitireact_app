@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -6,10 +6,20 @@ import cantine from "./images/CantineVersion2.jpg";
 import LanguageDetector from "./LanguageDetector";
 import NavHeader from "./NavHeader";
 import logo from "./images/LogoLND.jpeg";
-import LanguageContext  from "./LanguageContext";
+import LanguageContext from "./LanguageContext";
+import TitleContext from "./TitleContext";
+import labels from "./labels";
 
 function AppHeader() {
   const [language, setLanguage] = useState("en-US");
+  const [title, setTitle] = useState(labels["en-US"].developpement);
+
+ useEffect(() => {
+    if (labels[language]) {
+      setTitle(labels[language].developpement);
+    }
+  }, [language]);
+
   return (
     <div>
       <Container>
@@ -39,18 +49,23 @@ function AppHeader() {
                   </Col>
                   <Col className="d-flex justify-content-center align-items-center">
                     <h1 className="mb-3 text-white">
-                      Lukala Ngangu Développement
+                      <TitleContext.Provider value={{ title, setTitle }}>
+                        <div className="App">
+                          <h1>{title}</h1>
+                        </div>
+                      </TitleContext.Provider>
                     </h1>
                   </Col>
 
                   <Col>
                     <div style={{ float: "right" }}>
-                      <LanguageContext.Provider value={{ language, setLanguage }}>
+                      <LanguageContext.Provider
+                        value={{ language, setLanguage }}
+                      >
                         <div>
                           <LanguageDetector />
                         </div>
                       </LanguageContext.Provider>
-                  
                     </div>
                   </Col>
                 </Row>
@@ -60,7 +75,6 @@ function AppHeader() {
         </Row>
         <Row>
           <div>
-            
             <NavHeader language={language} />
           </div>
         </Row>

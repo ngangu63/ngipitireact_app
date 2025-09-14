@@ -18,7 +18,7 @@ import Contact from "./Pages/Contact";
 import Articles from "./Pages/Articles";
 import Courses from "./Pages/Courses";
 import NotFound from "./Pages/NotFound";
-import labels from "./Pages/labels";
+import labels from "./labels";
 
 function NavHeader(props) {
   const language = props.language;
