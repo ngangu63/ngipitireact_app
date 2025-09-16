@@ -80,7 +80,7 @@ function NavHeader(props) {
       <div className="container mt-4">
         <Routes>
           <Route path="/" element={<Outlet />}>
-            <Route index element={<Home />} />
+            <Route index element={<Home language={props.language}/>} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/articles" element={<Articles />} />
