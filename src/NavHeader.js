@@ -19,6 +19,7 @@ import Articles from "./Pages/Articles";
 import Courses from "./Pages/Courses";
 import NotFound from "./Pages/NotFound";
 import labels from "./labels";
+import Members from "./Pages/Members";
 
 function NavHeader(props) {
   const language = props.language;
@@ -41,9 +42,21 @@ function NavHeader(props) {
               <Nav.Link as={Link} to="/" exact>
                 {labels[language].home}
               </Nav.Link>
-              <Nav.Link as={Link} to="member">
-                {labels[language].member}
-              </Nav.Link>
+
+              <NavDropdown title="Membres" id="navbarScrollingDropdown">
+                <NavDropdown.Item as={Link} to="/membre">
+                  {labels[language].member}
+                </NavDropdown.Item>
+
+                <NavDropdown.Divider />
+                <NavDropdown.Item as={Link} to="/contact">
+                  {labels[language].contact}
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item as={Link} to="/finance">
+                  {labels[language].finance}
+                </NavDropdown.Item>
+              </NavDropdown>
 
               <Nav.Link as={Link} to="about">
                 {labels[language].about}
@@ -80,11 +93,12 @@ function NavHeader(props) {
       <div className="container mt-4">
         <Routes>
           <Route path="/" element={<Outlet />}>
-            <Route index element={<Home language={props.language}/>} />
+            <Route index element={<Home language={props.language} />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/articles" element={<Articles />} />
             <Route path="/courses" element={<Courses />} />
+            <Route path="/membre" element={<Members language={props.language} />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

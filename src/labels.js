@@ -6,7 +6,8 @@ const labels = {
     contact: "Contact",
     member: "Members",
     developpement: "Lukala Ngangu Development",
-    welcome: "Lukala's community is delighted to welcome you."
+    welcome: "Lukala's community is delighted to welcome you.",
+    finance: "Finance"
   },
   "fr-FR": {
     home: "Accueil",
@@ -14,7 +15,8 @@ const labels = {
     contact: "Contact",
     member: "Membres",
     developpement: "Lukala Ngangu Développement",
-    welcome: "Nous, ressortissants de Lukala, vous souhaitons la bienvenue sur notre interface."
+    welcome: "Nous, ressortissants de Lukala, vous souhaitons la bienvenue sur notre interface.",
+    finance: "Finance"
   },
   "kg-CG": {
     home: "Nzo eto",
@@ -22,7 +24,8 @@ const labels = {
     contact: "Bokila",
     member: "Kinvuka",
     developpement: "Ntomosono Ya Lukala Ngangu",
-    welcome: "Beto bana ba Lukala , tuena ye kiese muku yamba mu nzo eto"
+    welcome: "Wiza mu yenge mu nzo yeto ya Lukala",
+    finance: "Mbongo"
   }
   
 };
